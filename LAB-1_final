@@ -33,8 +33,6 @@
 
 #include <xc.h>
 
-
-
    
   char IN1 = 0;
   char IN2 = 0;
