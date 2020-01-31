@@ -25,27 +25,70 @@
 #define _XTAL_FREQ  4000000
 #define __delay_ms(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000.0)))
 
+#include <xc.h>
 
-void __interrupt() ISR(void){
-    //Entran anti rebotes de boton con sumador y restador
-    
-    if(PORTbtn1==1){IN1=1;}
-    if(PORTbtn2==0 && IN1=1){
-        IN2=0;
-        suma=suma+1;
-    }
-    
-    if(suma==valormax){
-        
-    
-    }
-        
-       
-
-}
+unsigned char contador = 0;
+//variable de boton de suma y suma
+char IN1 = 0;
+char INN1 = 0;
+//variable de boton de resta y resta
+char IN1 = 0;
+char INN2 = 0;
 
 
 void main(void){
+    
+    TRISC = 0;
+    TRISDbits.TRISD2 = 1;
+    TRISDbits.TRISD3 = 1;
+    TRISDbits.TRISD4 = 0;
+    TRISDbits.TRISD5 = 0;
+    TRISDbits.TRISD7 = 1;
+    TRISBbits.TRISB7 = 0;
+    
+    if(INN==1){
+        INN1=0;
+        if((contador>=0) && (contador<255)){
+            contador = contador + 1;
+        }
+        if(contador==255){
+            contador = 255;
+        }
+    }
+    if(INN2==1){
+        INN2=0;
+        if(contador>0 && contador <=255){
+            contador = contador -1;
+        }
+        if(contador==0){
+            contador = 0;
+        }
+    }
+
+void __interrupt() Counter(void){
+    
+    if(PORTbtn1==1){
+        IN1=1;
+    }
+    if(PORTbtn1==0 && IN1==1){
+        IN1=0;
+        INN1=1;
+    }
+    if(PORTbtn2==1){
+        IN2 = 1;
+    }
+    if(PORTbtn2==0 && IN2=1){
+        IN2=0;
+        INN2=1;
+    }
+    
+    
+}
+   
+        
+    
+    
+      
 
     return;
 }
