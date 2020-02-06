@@ -33,6 +33,7 @@
 
 #include <xc.h>
 #include <stdint.h>
+#include "libreria_lab2.h"
 
 
 uint8_t contador = 0;
@@ -47,10 +48,7 @@ unsigned char disp [] = {0b11101110, 0b00101000, 0b11001101, 0b01101101, 0b00101
 0b01100111, 0b11100111, 0b00101100, 0b11101111, 0b01101111, 0b10101111, 0b11100011, 
 0b11000110, 0b11101001, 0b11000111, 0b10000111};
 //Variables para conversión de ADC a hexa
-char X1 = 0;
-char Y1 = 0;
-char X = 0;
-char Y = 0;
+
 
 void __interrupt() ISR(void){
     di();
@@ -88,44 +86,11 @@ void __interrupt() ISR(void){
     
 }
 
-void adc_conv(void){
-    X = ADRESH;
-    Y = ADRESH;
-    
-    X1 = (X & 0b00001111);
-    Y1 = (Y & 0b11110000)>>4;
-}
-
-void config_adc(void){
-        
-    //Seteando ADC a un rate de Fosc/32
-    ADCON0bits.ADCS1 = 1;
-    ADCON0bits.ADCS0 = 0;
-    //Escogiendo canal del ADC
-    ADCON0bits.CHS = 0b1101;
-    //Enable ADC
-    ADCON0bits.ADON = 1;
-    //Formato del resultado (izquierda)
-    ADCON1bits.ADFM = 0;
-    //Pines de v ref
-    ADCON1bits.VCFG1 = 0;
-    ADCON1bits.VCFG0 = 0;
-}
-
-void timer0(void){
-        //TMRO
-    OPTION_REGbits.nRBPU = 1;
-    OPTION_REGbits.INTEDG = 0;
-    OPTION_REGbits.T0CS = 0;
-    OPTION_REGbits.T0SE = 0;
-    OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.PS = 0b000;
-    TMR0 = 3;
-}
-                      
-
-
 void main(void){
+    
+    config_adc();
+    adc_conv();
+    timer0();
     
     //Entradas/salidas
     TRISC = 0;

@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>libreria_lab2.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -13,13 +14,14 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>LAB_1.c</itemPath>
+      <itemPath>LAB_2.c</itemPath>
+      <itemPath>libreria_lab2.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>LAB_2.c</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -141,6 +143,14 @@
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
       <item path="LAB_1.c" ex="true" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
