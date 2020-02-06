@@ -46,6 +46,7 @@ char INN2 = 0;
 unsigned char disp [] = {0b11101110, 0b00101000, 0b11001101, 0b01101101, 0b00101011, 
 0b01100111, 0b11100111, 0b00101100, 0b11101111, 0b01101111, 0b10101111, 0b11100011, 
 0b11000110, 0b11101001, 0b11000111, 0b10000111};
+//Variables para conversión de ADC a hexa
 char X1 = 0;
 char Y1 = 0;
 char X = 0;
@@ -53,25 +54,29 @@ char Y = 0;
 
 void __interrupt() ISR(void){
     
+    if(INTCONbits.RBIF == 1){
+        di();
+        INTCONbits.RBIF = 0;
     
-    if(PORTBbits.RB2==1){
-        IN1=1;
+        if(PORTBbits.RB2==1){
+            IN1=1;
+        }
+        if(PORTBbits.RB2==0 && IN1==1){
+            IN1=0;
+            INN1=1;
+            INTCONbits.INTF = 0;
+        }
+        if(PORTBbits.RB1==1){
+            IN2 = 1;
+        }
+        if(PORTBbits.RB1==0 && IN2==1){
+            IN2=0;
+            INN2=1;
+            INTCONbits.INTF = 0;
+        }
+        ei();
     }
-    if(PORTBbits.RB2==0 && IN1==1){
-        IN1=0;
-        INN1=1;
-        INTCONbits.INTF = 0;
-        __delay_ms(100);
-    }
-    if(PORTBbits.RB1==1){
-        IN2 = 1;
-    }
-    if(PORTBbits.RB1==0 && IN2==1){
-        IN2=0;
-        INN2=1;
-        INTCONbits.INTF = 0;
-        __delay_ms(100);
-    }
+    
 }
 
 void adc_conv(void){
@@ -84,17 +89,17 @@ void adc_conv(void){
 
 
 void main(void){
+    
     //Entradas/salidas
     TRISC = 0;
     TRISA = 0;
     //Botones
-    TRISBbits.TRISB0 = 1;
     TRISBbits.TRISB1 = 1;
-    IOCBbits.IOCB0 = 1;
+    TRISBbits.TRISB2 = 1;
     IOCBbits.IOCB1 = 1;
-    //anteriormente en d2 y d3
+    IOCBbits.IOCB2 = 1;
     
-    //interrupciones
+    //Interrupciones
     OPTION_REGbits.INTEDG = 1; // Set Rising Edge Trigger for INT
     INTCONbits.GIE = 1; // Enable The Global Interrupt
     INTCONbits.INTE = 1; // Enable INT
