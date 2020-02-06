@@ -61,6 +61,7 @@ void __interrupt() ISR(void){
         IN1=0;
         INN1=1;
         INTCONbits.INTF = 0;
+        __delay_ms(100);
     }
     if(PORTBbits.RB1==1){
         IN2 = 1;
@@ -69,6 +70,7 @@ void __interrupt() ISR(void){
         IN2=0;
         INN2=1;
         INTCONbits.INTF = 0;
+        __delay_ms(100);
     }
 }
 
@@ -153,8 +155,6 @@ void main(void){
         __delay_ms(10);
         PORTDbits.RD5 = 0;
         
-        PORTA = contador;
-        
         if(ADCON0bits.GO_nDONE==0){
             ADCON0bits.GO_nDONE = 1;
         }
@@ -178,6 +178,8 @@ void main(void){
                 contador = 0;
             }
         }
+        
+        PORTA = contador;
         
         if(X >= contador){
             PORTBbits.RB7 = 1;   
