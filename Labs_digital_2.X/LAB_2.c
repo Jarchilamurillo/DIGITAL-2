@@ -53,23 +53,22 @@ char Y = 0;
 
 void __interrupt() ISR(void){
     
-    if(PORTBbits.RB1==1){
+    
+    if(PORTBbits.RB2==1){
         IN1=1;
     }
-    if(PORTBbits.RB1==0 && IN1==1){
-        di();
+    if(PORTBbits.RB2==0 && IN1==1){
         IN1=0;
         INN1=1;
-        ei();
+        INTCONbits.INTF = 0;
     }
-    if(PORTBbits.RB0==1){
+    if(PORTBbits.RB1==1){
         IN2 = 1;
     }
-    if(PORTBbits.RB0==0 && IN2==1){
-        di();
+    if(PORTBbits.RB1==0 && IN2==1){
         IN2=0;
         INN2=1;
-        ei();
+        INTCONbits.INTF = 0;
     }
 }
 
@@ -92,6 +91,11 @@ void main(void){
     IOCBbits.IOCB0 = 1;
     IOCBbits.IOCB1 = 1;
     //anteriormente en d2 y d3
+    
+    //interrupciones
+    OPTION_REGbits.INTEDG = 1; // Set Rising Edge Trigger for INT
+    INTCONbits.GIE = 1; // Enable The Global Interrupt
+    INTCONbits.INTE = 1; // Enable INT
     
     //Transistores
     TRISDbits.TRISD4 = 0;
@@ -149,7 +153,7 @@ void main(void){
         __delay_ms(10);
         PORTDbits.RD5 = 0;
         
-        //PORTA = contador;
+        PORTA = contador;
         
         if(ADCON0bits.GO_nDONE==0){
             ADCON0bits.GO_nDONE = 1;
@@ -157,7 +161,7 @@ void main(void){
         
         if(INN1==1){
             INN1=0;
-            if((contador>=0) && (contador<255)){
+            if((contador>=0) & (contador<=254)){
                 contador = contador + 1;
             }
             if(contador==255){
@@ -167,7 +171,7 @@ void main(void){
         
         if(INN2==1){
             INN2=0;
-            if(contador>0 && contador <=255){
+            if(contador>=1 & contador <=255){
                 contador = contador - 1;
             }
             if(contador==0){
@@ -175,8 +179,11 @@ void main(void){
             }
         }
         
-        if(ADRESH == contador){
-            PORTBbits.RB7 = 1;
+        if(X >= contador){
+            PORTBbits.RB7 = 1;   
+        }
+        else{
+            PORTBbits.RB7 = 0;
         }
     }
     return;
