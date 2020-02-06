@@ -53,28 +53,37 @@ char X = 0;
 char Y = 0;
 
 void __interrupt() ISR(void){
+    di();
     
     if(INTCONbits.RBIF == 1){
-        di();
         INTCONbits.RBIF = 0;
     
         if(PORTBbits.RB2==1){
             IN1=1;
+            di();
         }
         if(PORTBbits.RB2==0 && IN1==1){
             IN1=0;
             INN1=1;
             INTCONbits.INTF = 0;
+            INTCONbits.RBIF = 0;
+            ei();
+            return;
         }
         if(PORTBbits.RB1==1){
             IN2 = 1;
+            di();
         }
         if(PORTBbits.RB1==0 && IN2==1){
             IN2=0;
             INN2=1;
             INTCONbits.INTF = 0;
+            INTCONbits.RBIF = 0;
+            ei();
+            return;
         }
-        ei();
+        
+        
     }
     
 }
@@ -86,6 +95,34 @@ void adc_conv(void){
     X1 = (X & 0b00001111);
     Y1 = (Y & 0b11110000)>>4;
 }
+
+void config_adc(void){
+        
+    //Seteando ADC a un rate de Fosc/32
+    ADCON0bits.ADCS1 = 1;
+    ADCON0bits.ADCS0 = 0;
+    //Escogiendo canal del ADC
+    ADCON0bits.CHS = 0b1101;
+    //Enable ADC
+    ADCON0bits.ADON = 1;
+    //Formato del resultado (izquierda)
+    ADCON1bits.ADFM = 0;
+    //Pines de v ref
+    ADCON1bits.VCFG1 = 0;
+    ADCON1bits.VCFG0 = 0;
+}
+
+void timer0(void){
+        //TMRO
+    OPTION_REGbits.nRBPU = 1;
+    OPTION_REGbits.INTEDG = 0;
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.T0SE = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS = 0b000;
+    TMR0 = 3;
+}
+                      
 
 
 void main(void){
@@ -112,33 +149,17 @@ void main(void){
     ANSELH = 0b00100000;
     //LED alarma
     TRISBbits.TRISB7 = 0;
+
+    config_adc();
     
-    //Seteando ADC a un rate de Fosc/32
-    ADCON0bits.ADCS1 = 1;
-    ADCON0bits.ADCS0 = 0;
-    //Escogiendo canal del ADC
-    ADCON0bits.CHS = 0b1101;
-    //Enable ADC
-    ADCON0bits.ADON = 1;
-    //Formato del resultado (izquierda)
-    ADCON1bits.ADFM = 0;
-    //Pines de v ref
-    ADCON1bits.VCFG1 = 0;
-    ADCON1bits.VCFG0 = 0;
+    timer0();
     
     //Seteando reloj interno a 8MHz
     OSCCONbits.IRCF0 = 1;
     OSCCONbits.IRCF1 = 1;
     OSCCONbits.IRCF2 = 1;
 
-    //TMRO
-    OPTION_REGbits.nRBPU = 1;
-    OPTION_REGbits.INTEDG = 0;
-    OPTION_REGbits.T0CS = 0;
-    OPTION_REGbits.T0SE = 0;
-    OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.PS = 0b000;
-    TMR0 = 3;
+
     
     //Estados iniciales
     PORTDbits.RD4 = 0;
