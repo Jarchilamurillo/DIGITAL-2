@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\j_arc\AppData\Local\Temp\sfn4.o
+$C:\Users\j_arc\AppData\Local\Temp\sfuk.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 0 2007 2007 2 2
@@ -68,16 +68,16 @@ STRING BE-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Labs_digital_2.X.production.o
-F cinit CODE >462:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
-F cinit CODE >465:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
-F cinit CODE >488:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
-10 cinit CODE >489:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
-11 cinit CODE >490:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
-12 cinit CODE >491:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
-13 cinit CODE >492:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
-14 cinit CODE >498:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
-14 cinit CODE >500:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
-15 cinit CODE >501:C:\Users\j_arc\AppData\Local\Temp\sfn4.s
+F cinit CODE >462:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
+F cinit CODE >465:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
+F cinit CODE >488:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
+10 cinit CODE >489:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
+11 cinit CODE >490:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
+12 cinit CODE >491:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
+13 cinit CODE >492:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
+14 cinit CODE >498:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
+14 cinit CODE >500:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
+15 cinit CODE >501:C:\Users\j_arc\AppData\Local\Temp\sfuk.s
 4 intentry CODE >45:C:\Users\j_arc\Documents\GitHub\DIGITAL-2\Labs_digital_2.X\LAB_2.c
 91 text1 CODE >45:C:\Users\j_arc\Documents\GitHub\DIGITAL-2\Labs_digital_2.X\LAB_2.c
 91 text1 CODE >47:C:\Users\j_arc\Documents\GitHub\DIGITAL-2\Labs_digital_2.X\LAB_2.c
@@ -160,20 +160,20 @@ __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 _INN1 72 0 COMMON 1 bssCOMMON dist/default/production\Labs_digital_2.X.production.o
 _INN2 70 0 COMMON 1 bssCOMMON dist/default/production\Labs_digital_2.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\j_arc\AppData\Local\Temp\sfn4.o
+___sp 0 0 STACK 2 stack C:\Users\j_arc\AppData\Local\Temp\sfuk.o
 _main 30 0 CODE 0 maintext dist/default/production\Labs_digital_2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
-start 18 0 CODE 0 init C:\Users\j_arc\AppData\Local\Temp\sfn4.o
+start 18 0 CODE 0 init C:\Users\j_arc\AppData\Local\Temp\sfuk.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfn4.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfn4.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfn4.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfn4.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfn4.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfn4.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfuk.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfuk.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfuk.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfuk.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfuk.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\j_arc\AppData\Local\Temp\sfuk.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
@@ -183,14 +183,14 @@ _ADRESH 1E 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 _ADRESL 9E 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 __size_of_contadorrr 0 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\j_arc\AppData\Local\Temp\sfn4.o
-___stacklo 0 0 ABS 0 - C:\Users\j_arc\AppData\Local\Temp\sfn4.o
+___stackhi 0 0 ABS 0 - C:\Users\j_arc\AppData\Local\Temp\sfuk.o
+___stacklo 0 0 ABS 0 - C:\Users\j_arc\AppData\Local\Temp\sfuk.o
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\Labs_digital_2.X.production.o
 _TRISBbits 86 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 _TRISDbits 88 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\j_arc\AppData\Local\Temp\sfn4.o
+___int_sp 0 0 STACK 2 stack C:\Users\j_arc\AppData\Local\Temp\sfuk.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -237,7 +237,7 @@ __CFG_BOR4V$BOR40V 0 0 ABS 0 - dist/default/production\Labs_digital_2.X.producti
 saved_w 7E 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 __CFG_FOSC$INTRC_NOCLKOUT 0 0 ABS 0 - dist/default/production\Labs_digital_2.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\j_arc\AppData\Local\Temp\sfn4.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\j_arc\AppData\Local\Temp\sfuk.o
 __pmaintext 30 0 CODE 0 maintext dist/default/production\Labs_digital_2.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 400E 0 CONFIG 0 config -

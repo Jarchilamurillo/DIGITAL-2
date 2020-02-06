@@ -136,7 +136,7 @@ config 400E 4011 CONFIG 400E 0
 bssCOMMON 70 78 COMMON 70 1
 %locals
 dist/default/production\Labs_digital_2.X.production.o
-C:\Users\j_arc\AppData\Local\Temp\sfn4.s
+C:\Users\j_arc\AppData\Local\Temp\sfuk.s
 462 F 0 CODE 0
 465 F 0 CODE 0
 488 F 0 CODE 0

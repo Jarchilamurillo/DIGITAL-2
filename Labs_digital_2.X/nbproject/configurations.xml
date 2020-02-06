@@ -13,13 +13,13 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>LAB_1.c</itemPath>
-      <itemPath>LAB_2.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>LAB_2.c</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
