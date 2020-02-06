@@ -46,6 +46,10 @@ char INN2 = 0;
 unsigned char disp [] = {0b11101110, 0b00101000, 0b11001101, 0b01101101, 0b00101011, 
 0b01100111, 0b11100111, 0b00101100, 0b11101111, 0b01101111, 0b10101111, 0b11100011, 
 0b11000110, 0b11101001, 0b11000111, 0b10000111};
+char X1 = 0;
+char Y1 = 0;
+char X = 0;
+char Y = 0;
 
 void __interrupt() ISR(void){
     
@@ -68,6 +72,15 @@ void __interrupt() ISR(void){
         ei();
     }
 }
+
+void adc_conv(void){
+    X = ADRESH;
+    Y = ADRESH;
+    
+    X1 = (X & 0b00001111);
+    Y1 = (Y & 0b11110000)>>4;
+}
+
 
 void main(void){
     //Entradas/salidas
@@ -106,9 +119,7 @@ void main(void){
     OSCCONbits.IRCF0 = 1;
     OSCCONbits.IRCF1 = 1;
     OSCCONbits.IRCF2 = 1;
-    //Mas bits para ADC
-    ADCON0bits.GO_nDONE = 1;
-    
+
     //TMRO
     OPTION_REGbits.nRBPU = 1;
     OPTION_REGbits.INTEDG = 0;
@@ -118,7 +129,6 @@ void main(void){
     OPTION_REGbits.PS = 0b000;
     TMR0 = 3;
     
-    
     //Estados iniciales
     PORTDbits.RD4 = 0;
     PORTDbits.RD5 = 0;
@@ -126,22 +136,24 @@ void main(void){
     PORTBbits.RB7 = 0;
     
     while(1){
-        PORTC = ADRESH;
+        
+        adc_conv();
+        
+        PORTC = disp[X1];
         PORTDbits.RD4 = 1;
         __delay_ms(10);
         PORTDbits.RD4 = 0;
         
-        PORTC = ADRESH;
+        PORTC = disp[Y1];
         PORTDbits.RD5 = 1;
         __delay_ms(10);
         PORTDbits.RD5 = 0;
         
-        PORTA = contador;
+        //PORTA = contador;
         
-        if(ADCON0bits.ADON==0){
-            ADCON0bits.ADON = 1;
+        if(ADCON0bits.GO_nDONE==0){
+            ADCON0bits.GO_nDONE = 1;
         }
-        
         
         if(INN1==1){
             INN1=0;
@@ -152,6 +164,7 @@ void main(void){
                 contador = 255;
             }
         }
+        
         if(INN2==1){
             INN2=0;
             if(contador>0 && contador <=255){
@@ -160,6 +173,10 @@ void main(void){
             if(contador==0){
                 contador = 0;
             }
+        }
+        
+        if(ADRESH == contador){
+            PORTBbits.RB7 = 1;
         }
     }
     return;
