@@ -136,6 +136,8 @@ void main(void){
         
         adc_conv();
         
+        //multiplexado de displays
+        
         PORTC = disp[X1];
         PORTDbits.RD4 = 1;
         __delay_ms(10);
@@ -150,6 +152,7 @@ void main(void){
             ADCON0bits.GO_nDONE = 1;
         }
         
+        //funciones para suma y resta
         if(INN1==1){
             INN1=0;
             if((contador>=0) & (contador<=254)){
@@ -169,9 +172,10 @@ void main(void){
                 contador = 0;
             }
         }
-        
+        //salida del contador
         PORTA = contador;
         
+        //alarma
         if(X >= contador){
             PORTBbits.RB7 = 1;   
         }

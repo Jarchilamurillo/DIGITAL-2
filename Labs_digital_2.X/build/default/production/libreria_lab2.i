@@ -1,4 +1,4 @@
-# 1 "LAB_2.c"
+# 1 "libreria_lab2.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,30 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "LAB_2.c" 2
-# 13 "LAB_2.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
-
-
+# 1 "libreria_lab2.c" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2514,142 +2491,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 34 "LAB_2.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
-# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int8_t;
-
-
-
-
-
-
-typedef signed int int16_t;
-
-
-
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-
-
-
-typedef signed long int int32_t;
-# 52 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint8_t;
-
-
-
-
-
-typedef unsigned int uint16_t;
-
-
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-
-
-typedef unsigned long int uint32_t;
-# 88 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_least8_t;
-
-
-
-
-
-
-
-typedef signed int int_least16_t;
-# 109 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_least24_t;
-# 118 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed long int int_least32_t;
-# 136 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_least8_t;
-
-
-
-
-
-
-typedef unsigned int uint_least16_t;
-# 154 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_least24_t;
-
-
-
-
-
-
-
-typedef unsigned long int uint_least32_t;
-# 181 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_fast8_t;
-
-
-
-
-
-
-typedef signed int int_fast16_t;
-# 200 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_fast24_t;
-
-
-
-
-
-
-
-typedef signed long int int_fast32_t;
-# 224 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_fast8_t;
-
-
-
-
-
-typedef unsigned int uint_fast16_t;
-# 240 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_fast24_t;
-
-
-
-
-
-
-typedef unsigned long int uint_fast32_t;
-# 268 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef int32_t intmax_t;
-# 282 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef uint32_t uintmax_t;
-
-
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-# 35 "LAB_2.c" 2
+# 1 "libreria_lab2.c" 2
 
 # 1 "./libreria_lab2.h" 1
 # 18 "./libreria_lab2.h"
@@ -2662,156 +2504,41 @@ char Y = 0;
 void timer0(void);
 void config_adc(void);
 void adc_conv(void);
-# 36 "LAB_2.c" 2
+# 2 "libreria_lab2.c" 2
 
 
+void timer0(void){
 
-uint8_t contador = 0;
-
-char IN1 = 0;
-char INN1 = 0;
-
-char IN2 = 0;
-char INN2 = 0;
-
-unsigned char disp [] = {0b11101110, 0b00101000, 0b11001101, 0b01101101, 0b00101011,
-0b01100111, 0b11100111, 0b00101100, 0b11101111, 0b01101111, 0b10101111, 0b11100011,
-0b11000110, 0b11101001, 0b11000111, 0b10000111};
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void){
-    (INTCONbits.GIE = 0);
-
-    if(INTCONbits.RBIF == 1){
-        INTCONbits.RBIF = 0;
-
-        if(PORTBbits.RB2==1){
-            IN1=1;
-            (INTCONbits.GIE = 0);
-        }
-        if(PORTBbits.RB2==0 && IN1==1){
-            IN1=0;
-            INN1=1;
-            INTCONbits.INTF = 0;
-            INTCONbits.RBIF = 0;
-            (INTCONbits.GIE = 1);
-            return;
-        }
-        if(PORTBbits.RB1==1){
-            IN2 = 1;
-            (INTCONbits.GIE = 0);
-        }
-        if(PORTBbits.RB1==0 && IN2==1){
-            IN2=0;
-            INN2=1;
-            INTCONbits.INTF = 0;
-            INTCONbits.RBIF = 0;
-            (INTCONbits.GIE = 1);
-            return;
-        }
-
-
-    }
-
+    OPTION_REGbits.nRBPU = 1;
+    OPTION_REGbits.INTEDG = 0;
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.T0SE = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS = 0b000;
+    TMR0 = 3;
 }
 
-void main(void){
 
-    config_adc();
-    adc_conv();
-    timer0();
+void config_adc(void){
 
 
-    TRISC = 0;
-    TRISA = 0;
+    ADCON0bits.ADCS1 = 1;
+    ADCON0bits.ADCS0 = 0;
 
-    TRISBbits.TRISB1 = 1;
-    TRISBbits.TRISB2 = 1;
-    IOCBbits.IOCB1 = 1;
-    IOCBbits.IOCB2 = 1;
+    ADCON0bits.CHS = 0b1101;
 
+    ADCON0bits.ADON = 1;
 
-    OPTION_REGbits.INTEDG = 1;
-    INTCONbits.GIE = 1;
-    INTCONbits.INTE = 1;
+    ADCON1bits.ADFM = 0;
 
+    ADCON1bits.VCFG1 = 0;
+    ADCON1bits.VCFG0 = 0;
+}
 
-    TRISDbits.TRISD4 = 0;
-    TRISDbits.TRISD5 = 0;
+void adc_conv(void){
+    X = ADRESH;
+    Y = ADRESH;
 
-    TRISBbits.TRISB5 = 1;
-    ANSELH = 0b00100000;
-
-    TRISBbits.TRISB7 = 0;
-
-    config_adc();
-
-    timer0();
-
-
-    OSCCONbits.IRCF0 = 1;
-    OSCCONbits.IRCF1 = 1;
-    OSCCONbits.IRCF2 = 1;
-
-
-
-
-    PORTDbits.RD4 = 0;
-    PORTDbits.RD5 = 0;
-    PORTA = 0;
-    PORTBbits.RB7 = 0;
-
-    while(1){
-
-        adc_conv();
-
-
-
-        PORTC = disp[X1];
-        PORTDbits.RD4 = 1;
-        _delay((unsigned long)((10)*(8000000/4000.0)));
-        PORTDbits.RD4 = 0;
-
-        PORTC = disp[Y1];
-        PORTDbits.RD5 = 1;
-        _delay((unsigned long)((10)*(8000000/4000.0)));
-        PORTDbits.RD5 = 0;
-
-        if(ADCON0bits.GO_nDONE==0){
-            ADCON0bits.GO_nDONE = 1;
-        }
-
-
-        if(INN1==1){
-            INN1=0;
-            if((contador>=0) & (contador<=254)){
-                contador = contador + 1;
-            }
-            if(contador==255){
-                contador = 255;
-            }
-        }
-
-        if(INN2==1){
-            INN2=0;
-            if(contador>=1 & contador <=255){
-                contador = contador - 1;
-            }
-            if(contador==0){
-                contador = 0;
-            }
-        }
-
-        PORTA = contador;
-
-
-        if(X >= contador){
-            PORTBbits.RB7 = 1;
-        }
-        else{
-            PORTBbits.RB7 = 0;
-        }
-    }
-    return;
+    X1 = (X & 0b00001111);
+    Y1 = (Y & 0b11110000)>>4;
 }

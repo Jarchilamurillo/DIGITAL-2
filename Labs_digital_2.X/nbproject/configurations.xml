@@ -13,7 +13,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>LAB_1.c</itemPath>
       <itemPath>LAB_2.c</itemPath>
       <itemPath>libreria_lab2.c</itemPath>
     </logicalFolder>
@@ -142,16 +141,6 @@
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
-      <item path="LAB_1.c" ex="true" overriding="false">
-        <HI-TECH-COMP>
-        </HI-TECH-COMP>
-        <HI-TECH-LINK>
-        </HI-TECH-LINK>
-        <XC8-CO>
-        </XC8-CO>
-        <XC8-config-global>
-        </XC8-config-global>
-      </item>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
       </XC8-CO>

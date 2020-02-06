@@ -1,4 +1,4 @@
-#<xc.h>
+#include <xc.h>
 #include "libreria_lab2.h"
 
 void timer0(void){
