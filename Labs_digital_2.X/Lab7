@@ -1,0 +1,133 @@
+
+#include <SPI.h>
+#include <SD.h>
+
+File myFile;
+String x = "";
+void setup() {
+  // Open serial communications and wait for port to open:
+  Serial.begin(9600);
+
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+ 
+
+  Serial.print("Initializing SD card...");
+  if (!SD.begin(4)) {
+    Serial.println("SD initialization failed!");
+    while (1);
+  }
+  Serial.println("SD initialization done.");
+  Serial.println("");
+  Serial.println("Qué imagen quiere?");
+  Serial.println("");
+  Serial.println("-Demonio");
+  Serial.println("");
+  Serial.println("-Pepe la rana");
+  Serial.println("");
+  Serial.println("-Lentes");  
+  Serial.println("");
+  Serial.println("o coloque END para salir.");  
+}
+
+void loop() {
+  //OBTENIDO CODIGO PARA LEER CADENAS DE https://www.luisllamas.es/cadenas-de-texto-puerto-serie-arduino/
+  while (Serial.available()){
+      char character = Serial.read();//guarda lo que se lee del puerto 
+      if (character != '\n') // si character no es igual a nada
+      {
+         x.concat(character); //concatena los valores de character en una cadena
+      }
+       else
+      {
+         x = "";
+      }
+   }
+  if(x=="Demonio"){
+    // re-open the file for reading:
+    myFile = SD.open("como_sae.txt");
+    if (myFile) {
+      Serial.println("Archivo:");
+      // read from the file until there's nothing else in it:
+      while (myFile.available()) {
+        Serial.write(myFile.read());
+      }
+      // close the file:
+      myFile.close();
+      Serial.println("");
+      Serial.println("Otra imagen?");
+      Serial.println("");
+      Serial.println("-Demonio");
+      Serial.println("");
+      Serial.println("-Pepe la rana");
+      Serial.println("");
+      Serial.println("-Lentes");
+      Serial.println("");
+      Serial.println("o END para salir"); 
+    } 
+    else {
+      // if the file didn't open, print an error:
+      Serial.println("error opening test.txt");
+    }
+  }
+  if(x=="Pepe la rana"){
+    // re-open the file for reading:
+    myFile = SD.open("pepefrog.txt");
+    if (myFile) {
+      Serial.println("Archivo:");
+      // read from the file until there's nothing else in it:
+      while (myFile.available()) {
+        Serial.write(myFile.read());
+      }
+      // close the file:
+      myFile.close();
+      Serial.println("");
+      Serial.println("Otra imagen?");
+      Serial.println("");
+      Serial.println("-Demonio");
+      Serial.println("");
+      Serial.println("-Pepe la rana");
+      Serial.println("");
+      Serial.println("-Lentes");
+      Serial.println("");
+      Serial.println("o END para salir"); 
+    } 
+    else {
+      // if the file didn't open, print an error:
+      Serial.println("error opening test.txt");
+    }
+  }
+
+  if(x== "Lentes"){
+    // re-open the file for reading:
+    myFile = SD.open("glasses.txt");
+    if (myFile) {
+      Serial.println("Archivo:");
+      // read from the file until there's nothing else in it:
+      while (myFile.available()) {
+        Serial.write(myFile.read());
+      }
+      // close the file:
+      myFile.close();
+      Serial.println("");
+      Serial.println("Otra imagen?");
+      Serial.println("");
+      Serial.println("-Demonio");
+      Serial.println("");
+      Serial.println("-Pepe la rana");
+      Serial.println("");
+      Serial.println("-Lentes");
+      Serial.println("");
+      Serial.println("o END para salir"); 
+    } 
+    else {
+      // if the file didn't open, print an error:
+      Serial.println("error abriendo imagen");
+    }
+  }
+  if(x=="END"){
+  Serial.println("Adios.");
+  Serial.end();
+  }
+}
